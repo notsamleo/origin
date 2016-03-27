@@ -1,0 +1,36 @@
+﻿@using mybloggywog.Models
+@{
+    IQueryable<Tag> ReturnedTag = ViewBag.Tags;
+    var TagToQuery = ReturnedTag.FirstOrDefault();
+    var PostList = TagToQuery.Posts.ToList();
+
+    foreach (Post article in Enumerable.Reverse(PostList))
+    {
+        <a class="ArticleLink" href="@Url.Action("Post", "Post", new { id = article.Id })"><span class="PostHeader">{</span>@article.Title</a>
+        <p class="PostBody col-lg-offset-1">@article.Body</p>
+        <ul>
+            <li class="PostDate InlineInfo col-lg-offset-1"><strong>Created:</strong> @article.CreatedOn.ToShortTimeString() - @article.CreatedOn.Date.ToString("MMMM dd, yyyy")</li>
+            @if (article.EditedOn.HasValue)
+            {
+                <li class="InlineInfo PostDate"><strong>Edited:</strong> @article.EditedOn.Value.ToShortTimeString() - @article.EditedOn.Value.Date.ToString("MMMM dd, yyyy")</li>
+            }
+            @if (Session["IsAdmin"] != null)
+            {
+                if ((bool)Session["IsAdmin"])
+                {
+                    <li class="InlineInfo AdminLink"><a href="@Url.Action("Edit", "Post", new { id = article.Id })">Edit</a></li>
+                    <li class="InlineInfo AdminLink"><a href="@Url.Action("Delete", "Post", new { id = article.Id })">Delete</a></li>
+                }
+            }
+        </ul>
+
+        <ul>
+            @foreach (Tag PostTag in article.Tags)
+            {
+                <li class="inline"><a class="PostTags" href="@Url.Action("Tag", "Tag", new { id = PostTag.Id })">#@PostTag.Name</a>,</li>
+            }
+        </ul>
+
+        <hr class="PostDivider" />
+    }
+}

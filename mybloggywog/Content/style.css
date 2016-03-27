@@ -1,0 +1,198 @@
+﻿.SiteTitle {
+    color:#ccc;
+    text-align:center;
+    vertical-align:middle;
+    font-size:48pt;    
+    transition:500ms;
+}
+
+.SiteTitle:hover {
+    color:orange;
+}
+
+.sidebar-static {
+    height:100%;
+}
+
+.navigation {
+    padding-right:35px;
+    text-align:center;
+}
+
+.navigation li {
+    font-size:12pt;
+    list-style:none;
+    display:inline;
+}
+
+.navigation li a {
+    color:#333;
+    text-decoration:none;
+}
+
+.navigation li a:hover {
+    color:orange;
+}
+
+.content-container {
+    padding-top:0px;
+}
+
+.searchbox {
+    border:none;
+    border-bottom:solid 1px #999;
+}
+
+.TagCloud {
+    padding-top:30px;
+    width:75%;
+    text-align:center;
+    margin:auto;
+}
+
+.TagSuggestion {
+    color:#333;
+    font-size:16pt;
+    padding:5px;
+}
+
+.TagSuggestion:hover {
+    color:orange;
+    text-decoration:none;
+}
+
+
+@media (min-width:992px) {
+    .VerticalNavbar {
+        position:relative;
+        top:25%;
+        -moz-transform:translateY(-25%);
+    }
+
+    .sidebar-static {
+        position:fixed;
+    }
+
+    .content-container {
+        padding-top:50px;
+    }
+}
+
+.PostHeader {
+    color:orange;
+    font-size:32pt;
+}
+
+.ArticleLink {
+    text-decoration:none;
+    color:black;
+    font-size:28pt;
+}
+
+.PostDate {
+    opacity:0.5
+}
+
+.PostBody {
+    padding-right:20px;
+}
+
+.PostTags {
+    color:orange;
+    margin-right:5px;
+}
+
+.ArticleLink:hover {
+    color:#555;
+    text-decoration:none;
+}
+
+.UserLogin {
+    margin-top:-20px;
+    padding-top:0;
+}
+
+.UserName {
+    font-weight:bold;
+    font-style:italic;
+}
+
+.UserNav {
+    display:inline;
+    margin-right:5px;
+    margin-top:0px;
+    float:right;
+}
+
+.inline {
+    display:inline;
+}
+
+.TagSearch {
+    display:block;
+    text-align:center;
+    padding-top:20px;
+}
+
+.TagSearchBox {
+    border:none;
+    border-bottom:solid 1px #333;
+}
+
+.TagSearchButton {
+    -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background-color:transparent;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+    border:none;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;  
+    transition:500ms;  
+}
+
+.TagSearchButton:hover {
+    color:orange;
+}
+
+.AdminLink a {
+    text-decoration:none;
+    color:black;
+    opacity:0.7;
+    font-style:italic;
+}
+
+.AdminLink a:hover {
+    color:orange;
+    opacity:1;
+}
+
+.PostDivider {
+    opacity:0.2;
+    border-color:#333;
+    width:80%;
+    margin-bottom:50px;
+}
+
+.form-control {
+    resize:none;
+    margin-bottom:10px;
+}
+
+.FormBox {
+    width:75%;
+    margin:auto;
+    margin-top:50px;
+}
+
+.BodyEdit {
+    height:200px !important;
+}

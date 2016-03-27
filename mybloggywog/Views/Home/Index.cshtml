@@ -1,0 +1,36 @@
+﻿@using mybloggywog.Models
+@{
+    
+    IEnumerable<Post> ReturnedPosts = ViewBag.DisplayPosts;
+
+    foreach (var article in ReturnedPosts)
+    {
+
+        <a class="ArticleLink" href="@Url.Action("Post", "Post", new { id = article.Id })"><span class="PostHeader">{</span>@article.Title</a>
+        <p class="PostBody col-lg-offset-1">@article.Body</p>
+        <ul>
+            <li class="PostDate inline"><strong>Created:</strong> @article.CreatedOn.ToShortTimeString() - @article.CreatedOn.Date.ToString("MMMM dd, yyyy")</li>
+            @if (article.EditedOn.HasValue)
+            {
+                <li class="inline PostDate"><strong>Edited:</strong> @article.EditedOn.Value.ToShortTimeString() - @article.EditedOn.Value.Date.ToString("MMMM dd, yyyy")</li>
+            }
+        @if (Session["IsAdmin"] != null && (bool)Session["IsAdmin"])
+        {
+            <li class="inline AdminLink"><a href="@Url.Action("Edit", "Post", new { id = article.Id })">Edit</a></li>
+            <li class="inline AdminLink"><a href="@Url.Action("Delete", "Post", new { id = article.Id })">Delete</a></li>
+        }
+        </ul>
+    
+    <ul>
+        @foreach (Tag tag in article.Tags)
+        {
+            <li class="inline"><a class="PostTags" href="@Url.Action("Tag", "Tag", new { id = tag.Id })">#@tag.Name</a></li>
+        }
+        <!--Edit actionlink to point to comment anchor on post page-->
+        <li class="inline"><a class="CommentCount" href="@Url.Action("Post", "Post", new { id = article.Id })">@article.Comments.Count comments</a></li>
+    </ul>
+    
+        <hr class="PostDivider" />
+    }
+
+}
