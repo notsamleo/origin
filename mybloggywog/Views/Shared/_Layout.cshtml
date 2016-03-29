@@ -39,7 +39,11 @@
                                                    select t);
                                 foreach (Tag tag in TagsInCloud)
                                 {
-                                    <a class="TagSuggestion" href="@Url.Action("Tag", "Tag", new { id = tag.Id })">#@tag.Name</a>
+                                    var TagPosts = tag.Posts.ToList();
+                                    if (TagPosts.Count > 0)
+                                    { 
+                                        <a class="TagSuggestion" href="@Url.Action("Tag", "Tag", new { id = tag.Id })">#@tag.Name</a>
+                                    }
                                 }
                             }
                          }            

@@ -128,6 +128,11 @@
     display:inline;
 }
 
+.ArchivePost {
+    border-left:solid 5px orange;
+    padding-left:20px;
+}
+
 .TagSearch {
     display:block;
     text-align:center;

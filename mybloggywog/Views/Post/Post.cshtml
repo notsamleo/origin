@@ -6,10 +6,10 @@
         <h1><span class="PostHeader">{</span>@post.Title</h1>
         <p class="PostBody col-lg-offset-1">@post.Body</p>
         <ul>
-            <li class="PostDate inline col-lg-offset-1">Created: @post.CreatedOn.ToShortTimeString() - @post.CreatedOn.Date.ToString("MMMM dd, yyyy")</li>
+            <li class="PostDate inline col-lg-offset-1">Created: @post.CreatedOn.ToShortTimeString() - @post.CreatedOn.Date.ToString("ddd, MMMM dd, yyyy")</li>
             @if (post.EditedOn != null)
             {
-                <li class="inline PostDate">Edited: @post.EditedOn.ToShortTimeString() - @post.EditedOn.Date.ToString("MMMM dd, yyyy")</li>
+                <li class="inline PostDate">Edited: @post.EditedOn.ToShortTimeString() - @post.EditedOn.Date.ToString("ddd, MMMM dd, yyyy")</li>
             }
             @if (Session["IsAdmin"] != null && (bool)Session["IsAdmin"] )
             {
