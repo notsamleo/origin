@@ -28,7 +28,14 @@ namespace mybloggywog.Controllers
 
         public ActionResult CreatePost()
         {
-            return View();
+            if (Session["username"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
         }
 
 
@@ -71,20 +78,29 @@ namespace mybloggywog.Controllers
 
         public ActionResult Delete(int id)
         {
-            using (var dbContext = new blogEntities())
+
+            if (Session["username"] != null)
             {
-                //Identify single post by id
-                var PostToDelete = (from p in dbContext.Posts
-                                    where p.Id == id
-                                    select p).FirstOrDefault();
+                using (var dbContext = new blogEntities())
+                {
+                    //Identify single post by id
+                    var PostToDelete = (from p in dbContext.Posts
+                                        where p.Id == id
+                                        select p).FirstOrDefault();
 
-                //And casts it into the fires of Mt. Doom
-                dbContext.Posts.Remove(PostToDelete);
+                    //And casts it into the fires of Mt. Doom
+                    dbContext.Posts.Remove(PostToDelete);
 
-                dbContext.SaveChanges();
+                    dbContext.SaveChanges();
+                }
+
+                return RedirectToAction("Index", "Home");
             }
-
-            return RedirectToAction("Index", "Home");
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
+            
         }
 
 
@@ -92,13 +108,20 @@ namespace mybloggywog.Controllers
         //in the view
         public ActionResult Edit(int id)
         {
-            var dbContext = new blogEntities();
+            if (Session["username"] != null)
+            {
+                var dbContext = new blogEntities();
 
-            var postToEdit = (from p in dbContext.Posts
-                              where p.Id == id
-                              select p).FirstOrDefault();
+                var postToEdit = (from p in dbContext.Posts
+                                  where p.Id == id
+                                  select p).FirstOrDefault();
 
-            return View(postToEdit);
+                return View(postToEdit);
+            }
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
         }
 
 
