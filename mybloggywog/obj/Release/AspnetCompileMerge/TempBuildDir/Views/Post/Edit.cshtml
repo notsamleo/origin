@@ -1,0 +1,18 @@
+﻿@model mybloggywog.Models.Post
+
+
+<div class="FormBox">
+    @using (Html.BeginForm())
+    {        
+        <fieldset>
+            <legend>
+                Edit post
+            </legend>
+        </fieldset>
+        
+        @Html.TextBoxFor(a => a.Title, new { @class="form-control", @value = Model.Title })
+        @Html.TextAreaFor(a => a.Body, new { @class="form-control BodyEdit", @value = Model.Body })
+        <input type="hidden" value="@Model.Id" />
+        <input type="submit" class="btn btn-warning pull-right" value="Post" />
+    }
+</div>

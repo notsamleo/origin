@@ -1,0 +1,77 @@
+﻿@using mybloggywog.Models
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Sam King</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/Content/style.css" />
+    </head>
+    <body>
+
+        <nav class="sidebar-container">
+            <div class="sidebar-static col-lg-3 col-md-3">
+                <div class="VerticalNavbar">
+                    <h1 class="SiteTitle">Sam King</h1>
+
+                    <ul class="navigation">
+                        <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                        <li>&bull;</li>
+                        <li><a href="@Url.Action("Archive","Home")">Archive</a></li>
+                        <li>&bull;</li>
+                        <li><a href="@Url.Action("Contact","Contact")">Contact</a></li>
+                    </ul>
+
+                    <div class="TagSearch">
+                        @using (Html.BeginForm("Tagsearch", "Tag"))
+                        {
+                            @Html.TextBox("TagSearchString", "", new { @class = "TagSearchBox", placeholder = "search tags:" });
+                            <button class="TagSearchButton" type="submit"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button>
+                        }
+                    </div>
+                    <div class="TagCloud">
+                        @{
+                            using (var dbContext = new blogEntities())
+                            {
+                                var TagsInCloud = (from t in dbContext.Tags
+                                                   select t);
+                                foreach (Tag tag in TagsInCloud)
+                                {
+                                    var TagPosts = tag.Posts.ToList();
+                                    if (TagPosts.Count > 0)
+                                    { 
+                                        <a class="TagSuggestion" href="@Url.Action("Tag", "Tag", new { id = tag.Id })">#@tag.Name</a>
+                                    }
+                                }
+                            }
+                         }            
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid content-container col-lg-7 col-lg-offset-4 col-md-7 col-md-offset-4 col-sm-10 col-sm-offset-1">
+            <div class="row UserLogin">
+                <div class="col-lg-6 col-lg-offset-6">
+                    <ul>
+                        @if (Session["username"] != null)
+                        {
+                            <li class="UserNav"><a href="@Url.Action("Logout", "User")">Sign out</a></li> 
+                            <li class="UserNav"><span>|</span></li>
+                            <li class="UserNav"><a href="@Url.Action("CreatePost", "Post")">Create new post</a></li>
+                            <li class="UserNav UserName">Hi, @Session["username"]</li>          
+                        }
+                        else
+                        {
+                            <li class="UserNav"><a href="@Url.Action("Login","User")">Sign in</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            @RenderBody()
+        </div>
+
+    </body>
+</html>

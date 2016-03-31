@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="morningcoffeemusings.com/myapp" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Sam\\Desktop\\mybloggywog\\mybloggywog\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Sam\\Desktop\\mybloggywog\\mybloggywog\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="blogEntities-Web.config Connection String" description="" value="metadata=res://*/Models.BloggingDataContext.csdl|res://*/Models.BloggingDataContext.ssdl|res://*/Models.BloggingDataContext.msl;provider=System.Data.SqlClient;provider connection string='Data Source=localhost;AttachDbFilename=&quot;C:\Users\Sam\Desktop\New folder (2)\blog.mdf&quot;;Integrated Security=True;Application Name=EntityFramework'" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Sam\\Desktop\\mybloggywog\\mybloggywog\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='blogEntities']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=localhost;AttachDbFilename=&quot;C:\Users\Sam\Desktop\New folder (2)\blog.mdf&quot;;Integrated Security=True;Application Name=EntityFramework" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Sam\\Desktop\\mybloggywog\\mybloggywog\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

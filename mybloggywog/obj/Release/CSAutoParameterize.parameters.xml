@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-mybloggywog-20160202204449;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-mybloggywog-20160202204449.mdf" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Sam\\Desktop\\mybloggywog\\mybloggywog\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="blogEntities-Web.config Connection String" description="blogEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.BloggingDataContext.csdl|res://*/Models.BloggingDataContext.ssdl|res://*/Models.BloggingDataContext.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=localhost;initial catalog=blog;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Sam\\Desktop\\mybloggywog\\mybloggywog\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='blogEntities']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,11 @@
+﻿@{
+    
+    foreach (var article in ViewBag.DisplayPosts)
+    {
+        <div class="ArchivePost">
+            <a class="ArchiveLink" href="@Url.Action("Post", "Post", new { id = article.Id })">@article.Title</a><p>by @article.CreatedBy</p>
+            <p>@article.CreatedOn.ToString("HH:mm - dddd, MMMM dd, yyyy")</p>
+            <br/>
+        </div>
+    }       
+}

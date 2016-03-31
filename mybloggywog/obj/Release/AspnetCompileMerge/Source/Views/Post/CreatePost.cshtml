@@ -1,0 +1,17 @@
+﻿<div class="FormBox">
+    @using (Html.BeginForm("CreatePost", "Post"))
+    {
+        <fieldset>
+            <legend>
+                New post
+            </legend>
+        </fieldset>
+        
+        @Html.TextBox("title", "", new { @class = "form-control", placeholder = "Title" })
+        @Html.TextArea("body", "", new { @class = "BodyEdit form-control", placeholder = "Start typing here..." })
+        @Html.TextBox("tags", "", new { @class="form-control", placeholder="Tags" })
+        
+        <input type="hidden" name="createdby" value="@Session["username"]" />    
+        <input type="submit" class="btn btn-warning pull-right" value="Post" />
+    }
+</div>

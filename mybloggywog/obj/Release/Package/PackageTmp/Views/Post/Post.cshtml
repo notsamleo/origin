@@ -1,0 +1,54 @@
+﻿@using mybloggywog.Models
+@{
+    
+    foreach (var post in ViewBag.SinglePost)
+    {
+        <h1><span class="PostHeader">{</span>@post.Title</h1>
+        <p class="PostBody col-lg-offset-1">@post.Body</p>
+        <ul>
+            <li class="PostDate inline col-lg-offset-1">Created: @post.CreatedOn.ToShortTimeString() - @post.CreatedOn.Date.ToString("ddd, MMMM dd, yyyy")</li>
+            @if (post.EditedOn != null)
+            {
+                <li class="inline PostDate">Edited: @post.EditedOn.ToShortTimeString() - @post.EditedOn.Date.ToString("ddd, MMMM dd, yyyy")</li>
+            }
+            @if (Session["IsAdmin"] != null && (bool)Session["IsAdmin"] )
+            {
+                    <li class="inline AdminLink"><a href="@Url.Action("Edit", "Post", new { id = post.Id })">Edit</a></li>
+                    <li class="inline AdminLink"><a href="@Url.Action("Delete", "Post", new { id = post.Id })">Delete</a></li>
+            }
+        </ul>
+    
+        <ul>
+            @foreach (Tag tag in post.Tags)
+            {
+                <li class="inline"><a class="PostTags" href="@Url.Action("Tag", "Post", new { id = tag.Id })">#@tag.Name</a></li>
+            }
+        </ul>
+    
+    
+        using (Html.BeginForm("AddComment", "Comment"))
+        {
+            <fieldset>
+                <legend>
+                    Comments
+                </legend>
+            </fieldset>
+    
+            @Html.TextBox("name", "", new { @class = "form-control", placeholder = "Name" });
+            @Html.TextArea("comment", "", new { @class = "form-control", placeholder = "Your comment..." });
+            <input type="hidden" name="postId" value="@post.Id" />
+            <input type="submit" value="Post" />
+        }
+        
+        <hr />
+    
+        foreach (Comment comment in Enumerable.Reverse(post.Comments))
+        {            
+            <h4 class="inline">@comment.Name</h4>
+            <p>@comment.Body</p>
+            <p>@comment.CreatedOn.ToShortTimeString() - @comment.CreatedOn.Date.ToString("MMMM dd, yyyy")</p>    
+            <hr/>
+        }
+    }
+    
+}

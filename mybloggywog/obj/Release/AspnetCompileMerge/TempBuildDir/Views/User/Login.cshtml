@@ -1,0 +1,22 @@
+﻿@using (Html.BeginForm("Login", "User"))
+{
+    @Html.ValidationSummary(true, "Login failed, username or password is incorrect");
+    
+    <div class="FormBox">
+        <fieldset>
+            <legend>Sign in</legend>
+        </fieldset>
+
+        <fieldset>
+
+                @Html.TextBox("username", "", new { @class="form-control", @placeholder="Username" })
+            
+                @Html.TextBox("password", "", new { @class="form-control", @type="password", @placeholder="Password" })
+
+                <br/>
+
+            <input type="submit" class="btn btn-warning pull-right" value="Log in" />
+
+        </fieldset>
+    </div>
+}
